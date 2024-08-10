@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Guests API
+  title: Guest API
   version: 1.0.0
   description: API for managing guests
   contact:
@@ -12,16 +12,16 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local server
-  - url: https://api.fiap.com.br/guests
+  - url: https://api.fiap.com.br/guest
     description: Production server
 tags:
-  - name: Guests
+  - name: Guest
     description: Operations related to guests
 paths:
-  /guests:
+  /guest:
     get:
       tags:
-        - Guests
+        - Guest
       summary: List all guests
       operationId: listGuests
       responses:
@@ -35,9 +35,9 @@ paths:
                   $ref: "#/components/schemas/Guest"
     post:
       tags:
-        - Guests
+        - Guest
       summary: Create a new guest
-      operationId: createGuests
+      operationId: createGuest
       requestBody:
         required: true
         content:
@@ -51,10 +51,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Guest"
-  /guests/{guestId}:
+  /guest/{guestId}:
     put:
       tags:
-        - Guests
+        - Guest
       summary: Update an existing guest
       operationId: updateGuest
       parameters:

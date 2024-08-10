@@ -133,16 +133,16 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>guests</id>
+						<id>guest</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/api/guests.yaml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/api/guest.yaml</inputSpec>
 							<language>spring</language>
 							<generateSupportingFiles>false</generateSupportingFiles>
-							<apiPackage>com.videocustom.guests.api</apiPackage>
-							<modelPackage>com.videocustom.guests.model</modelPackage>
+							<apiPackage>com.videocustom.guest.api</apiPackage>
+							<modelPackage>com.videocustom.guest.model</modelPackage>
 							<modelNameSuffix>DTO</modelNameSuffix>
 							<configOptions>
 								<interfaceOnly>true</interfaceOnly>
