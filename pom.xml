@@ -132,6 +132,25 @@
 							</configOptions>
 						</configuration>
 					</execution>
+					<execution>
+						<id>guests</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/api/guests.yaml</inputSpec>
+							<language>spring</language>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<apiPackage>com.videocustom.guests.api</apiPackage>
+							<modelPackage>com.videocustom.guests.model</modelPackage>
+							<modelNameSuffix>DTO</modelNameSuffix>
+							<configOptions>
+								<interfaceOnly>true</interfaceOnly>
+								<jakarta>true</jakarta>
+								<java8>true</java8>
+							</configOptions>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 
