@@ -171,16 +171,16 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>projects</id>
+						<id>project</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/api/projects.yaml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/api/project.yaml</inputSpec>
 							<language>spring</language>
 							<generateSupportingFiles>false</generateSupportingFiles>
-							<apiPackage>com.videocustom.projects.api</apiPackage>
-							<modelPackage>com.videocustom.projects.model</modelPackage>
+							<apiPackage>com.videocustom.project.api</apiPackage>
+							<modelPackage>com.videocustom.project.model</modelPackage>
 							<modelNameSuffix>DTO</modelNameSuffix>
 							<configOptions>
 								<interfaceOnly>true</interfaceOnly>

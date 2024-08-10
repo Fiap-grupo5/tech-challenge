@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Projects API
+  title: Project API
   version: 1.0.0
   description: API for managing projects
   contact:
@@ -12,16 +12,16 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local server
-  - url: https://api.fiap.com.br/projects
+  - url: https://api.fiap.com.br/project
     description: Production server
 tags:
-  - name: Projects
+  - name: Project
     description: Operations related to projects
 paths:
-  /projects:
+  /project:
     get:
       tags:
-        - Projects
+        - Project
       summary: List all projects
       operationId: listProjects
       responses:
@@ -35,7 +35,7 @@ paths:
                   $ref: "#/components/schemas/Project"
     post:
       tags:
-        - Projects
+        - Project
       summary: Create a new project
       operationId: createProject
       requestBody:
@@ -51,10 +51,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Project"
-  /projects/{projectId}:
+  /project/{projectId}:
     put:
       tags:
-        - Projects
+        - Project
       summary: Update an existing project
       operationId: updateProject
       parameters:
@@ -80,7 +80,7 @@ paths:
                 $ref: "#/components/schemas/Project"
     delete:
       tags:
-        - Projects
+        - Project
       summary: Delete a project
       operationId: deleteProject
       parameters:
