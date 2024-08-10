@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: Resquest API
+  version: 1.0.0
+  description: API for managing requests
+  contact:
+    name: Gabriel Arrighi Silva
+    email: gasilva912@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://localhost:8080
+    description: Local server
+  - url: https://api.fiap.com.br/request
+    description: Production server
+tags:
+  - name: Resquest
+    description: Operations related to resquests
+paths:
+  /request:
+    get:
+      tags:
+        - Resquest
+      summary: List all requests
+      operationId: listResquests
+      responses:
+        "200":
+          description: A list of requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Resquest"
+    post:
+      tags:
+        - Resquest
+      summary: Create a new resquest
+      operationId: createResquest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRequest"
+      responses:
+        "201":
+          description: The request was created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Resquest"
+  /request/{requestId}:
+    put:
+      tags:
+        - Resquest
+      summary: Update an existing request
+      operationId: updateResquest
+      parameters:
+        - name: requestId
+          in: query
+          description: The request ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRequest"
+      responses:
+        "200":
+          description: The request was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Resquest"
+    delete:
+      tags:
+        - Resquest
+      summary: Delete a request
+      operationId: deleteResquest
+      parameters:
+        - name: requestId
+          in: query
+          description: The request ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The request was deleted
+components:
+  schemas:
+    Resquest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The request ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        videoId:
+          type: string
+          format: uuid
+          description: The video ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        time:
+          type: integer
+          description: The time the request was made in milliseconds
+          example: 1000
+        requestBy:
+          type: string
+          format: uuid
+          description: The user ID that made the request
+          example: 123e4567-e89b-12d3-a456-426614174000
+        description:
+          type: string
+          description: The request description
+          example: Request Description
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the user was created
+          example: 2021-06-01T10:00:00Z
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the user was updated
+          example: 2021-06-01T10:00:00Z
+        deletedAt:
+          type: string
+          format: date-time
+          description: The date and time the user was deleted
+          example: 2021-06-01T10:00:00Z
+    CreateRequest:
+      type: object
+      properties:
+        videoId:
+          type: string
+          format: uuid
+          description: The video ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        time:
+          type: integer
+          description: The time the request was made in milliseconds
+          example: 1000
+        requestBy:
+          type: string
+          format: uuid
+          description: The user ID that made the request
+          example: 123e4567-e89b-12d3-a456-426614174000
+        description:
+          type: string
+          description: The request description
+          example: Request Description
+      required:
+        - videoId
+        - time
+        - requestBy
+        - description
+    UpdateRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The request ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        videoId:
+          type: string
+          format: uuid
+          description: The video ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        time:
+          type: integer
+          description: The time the request was made in milliseconds
+          example: 1000
+        requestBy:
+          type: string
+          format: uuid
+          description: The user ID that made the request
+          example: 123e4567-e89b-12d3-a456-426614174000
+        description:
+          type: string
+          description: The request description
+          example: Request Description
