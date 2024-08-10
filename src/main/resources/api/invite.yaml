@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: Invite API
+  version: 1.0.0
+  description: API for managing invite
+  contact:
+    name: Gabriel Arrighi Silva
+    email: gasilva912@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://localhost:8080
+    description: Local server
+  - url: https://api.fiap.com.br/invite
+    description: Production server
+tags:
+  - name: Invite
+    description: Operations related to invite
+paths:
+  /invite:
+    get:
+      tags:
+        - Invite
+      summary: List all invites
+      operationId: listInvites
+      responses:
+        "200":
+          description: A list of invites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Invite"
+    post:
+      tags:
+        - Invite
+      summary: Create a new invite
+      operationId: createInvite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateInvite"
+      responses:
+        "201":
+          description: The invite was created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invite"
+  /invite/{inviteId}:
+    put:
+      tags:
+        - Invite
+      summary: Update an existing invite
+      operationId: updateInvite
+      parameters:
+        - name: inviteId
+          in: query
+          description: The invite ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateInvite"
+      responses:
+        "200":
+          description: The invite was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invite"
+    delete:
+      tags:
+        - Invite
+      summary: Delete a invite
+      operationId: deleteInvite
+      parameters:
+        - name: inviteId
+          in: query
+          description: The invite ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The invite was deleted
+components:
+  schemas:
+    Invite:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The invite ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        guestId:
+          type: string
+          format: uuid
+          description: The guest ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        projectId:
+          type: string
+          format: uuid
+          description: The project ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        inviteBy:
+          type: string
+          format: uuid
+          description: The user Id
+          example: 123e4567-e89b-12d3-a456-426614174000
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the invite was created
+          example: 2021-06-01T10:00:00Z
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the invite was updated
+          example: 2021-06-01T10:00:00Z
+        deletedAt:
+          type: string
+          format: date-time
+          description: The date and time the invite was deleted
+          example: 2021-06-01T10:00:00Z
+    CreateInvite:
+      type: object
+      properties:
+        guestId:
+          type: string
+          format: uuid
+          description: The guest ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        projectId:
+          type: string
+          format: uuid
+          description: The project ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        inviteBy:
+          type: string
+          format: uuid
+          description: The user Id
+          example: 123e4567-e89b-12d3-a456-426614174000
+      required:
+        - guestId
+        - projectId
+        - inviteBy
+    UpdateInvite:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The guest ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        guestId:
+          type: string
+          format: uuid
+          description: The guest ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        projectId:
+          type: string
+          format: uuid
+          description: The project ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        inviteBy:
+          type: string
+          format: uuid
+          description: The user Id
+          example: 123e4567-e89b-12d3-a456-426614174000

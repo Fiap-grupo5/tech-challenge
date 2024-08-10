@@ -151,6 +151,25 @@
 							</configOptions>
 						</configuration>
 					</execution>
+					<execution>
+						<id>invite</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/api/invite.yaml</inputSpec>
+							<language>spring</language>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<apiPackage>com.videocustom.invite.api</apiPackage>
+							<modelPackage>com.videocustom.invite.model</modelPackage>
+							<modelNameSuffix>DTO</modelNameSuffix>
+							<configOptions>
+								<interfaceOnly>true</interfaceOnly>
+								<jakarta>true</jakarta>
+								<java8>true</java8>
+							</configOptions>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 
