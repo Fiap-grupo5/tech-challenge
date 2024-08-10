@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Users API
+  title: User API
   version: 1.0.0
   description: API for managing users
   contact:
@@ -12,16 +12,16 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local server
-  - url: https://api.fiap.com.br/users
+  - url: https://api.fiap.com.br/user
     description: Production server
 tags:
-  - name: Users
+  - name: User
     description: Operations related to users
 paths:
-  /users:
+  /user:
     get:
       tags:
-        - Users
+        - User
       summary: List all users
       operationId: listUsers
       responses:
@@ -35,7 +35,7 @@ paths:
                   $ref: "#/components/schemas/User"
     post:
       tags:
-        - Users
+        - User
       summary: Create a new user
       operationId: createUser
       requestBody:
@@ -51,10 +51,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
-  /users/{userId}:
+  /user/{userId}:
     put:
       tags:
-        - Users
+        - User
       summary: Update an existing user
       operationId: updateUser
       parameters:
@@ -80,7 +80,7 @@ paths:
                 $ref: "#/components/schemas/User"
     delete:
       tags:
-        - Users
+        - User
       summary: Delete a user
       operationId: deleteUser
       parameters:
