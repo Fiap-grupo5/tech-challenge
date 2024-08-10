@@ -1,0 +1,231 @@
+openapi: 3.0.3
+info:
+  title: Video API
+  version: 1.0.0
+  description: API for managing video
+  contact:
+    name: Gabriel Arrighi Silva
+    email: gasilva912@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://localhost:8080
+    description: Local server
+  - url: https://api.fiap.com.br/video
+    description: Production server
+tags:
+  - name: Video
+    description: Operations related to videos
+paths:
+  /video:
+    get:
+      tags:
+        - Video
+      summary: List all videos
+      operationId: listVideos
+      responses:
+        "200":
+          description: A list of videos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Video"
+    post:
+      tags:
+        - Video
+      summary: Create a new video
+      operationId: createVideo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateVideo"
+      responses:
+        "201":
+          description: The video was created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Video"
+  /video/{videoId}:
+    put:
+      tags:
+        - Video
+      summary: Update an existing video
+      operationId: updateVideo
+      parameters:
+        - name: videoId
+          in: query
+          description: The video ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateVideo"
+      responses:
+        "200":
+          description: The video was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Video"
+    delete:
+      tags:
+        - Video
+      summary: Delete a video
+      operationId: deleteVideo
+      parameters:
+        - name: videoId
+          in: query
+          description: The video ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The video was deleted
+components:
+  schemas:
+    Video:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The video ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        name:
+          type: string
+          maxLength: 255
+          description: The video name
+          example: Video Name
+        url:
+          type: string
+          format: url
+          maxLength: 255
+          description: The video url
+          example: https://www.youtube.com/watch?v=123456
+        description:
+          type: string
+          description: The video description
+          example: Video Description
+        projectId:
+          type: string
+          format: uuid
+          description: The project ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        status:
+          type: string
+          format: enum
+          enum:
+            - created
+            - reproved
+            - approved
+          description: The video status
+          example: created
+        createdBy:
+          type: string
+          format: uuid
+          description: The user ID that created the video
+          example: 123e4567-e89b-12d3-a456-426614174000
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the user was created
+          example: 2021-06-01T10:00:00Z
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the user was updated
+          example: 2021-06-01T10:00:00Z
+        deletedAt:
+          type: string
+          format: date-time
+          description: The date and time the user was deleted
+          example: 2021-06-01T10:00:00Z
+    CreateVideo:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          description: The video name
+          example: Video Name
+        url:
+          type: string
+          format: url
+          maxLength: 255
+          description: The video url
+          example: https://www.youtube.com/watch?v=123456
+        description:
+          type: string
+          description: The video description
+          example: Video Description
+        projectId:
+          type: string
+          format: uuid
+          description: The project ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        createdBy:
+          type: string
+          format: uuid
+          description: The user ID that created the video
+          example: 123e4567-e89b-12d3-a456-426614174000
+      required:
+        - name
+        - url
+        - description
+        - projectId
+        - createdBy
+    UpdateVideo:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The video ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        name:
+          type: string
+          maxLength: 255
+          description: The video name
+          example: Video Name
+        url:
+          type: string
+          format: url
+          maxLength: 255
+          description: The video url
+          example: https://www.youtube.com/watch?v=123456
+        description:
+          type: string
+          description: The video description
+          example: Video Description
+        status:
+          type: string
+          format: enum
+          enum:
+            - created
+            - reproved
+            - approved
+          description: The video status
+          example: created
+        projectId:
+          type: string
+          format: uuid
+          description: The project ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        createdBy:
+          type: string
+          format: uuid
+          description: The user ID that created the video
+          example: 123e4567-e89b-12d3-a456-426614174000
