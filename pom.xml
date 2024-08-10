@@ -95,35 +95,16 @@
 				<version>3.0.57</version>
 				<executions>
 					<execution>
-						<id>products</id>
+						<id>users</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/api/products.yaml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/api/users.yaml</inputSpec>
 							<language>spring</language>
 							<generateSupportingFiles>false</generateSupportingFiles>
-							<apiPackage>com.sonnesen.products.api</apiPackage>
-							<modelPackage>com.sonnesen.products.model</modelPackage>
-							<modelNameSuffix>DTO</modelNameSuffix>
-							<configOptions>
-								<interfaceOnly>true</interfaceOnly>
-								<jakarta>true</jakarta>
-								<java8>true</java8>
-							</configOptions>
-						</configuration>
-					</execution>
-					<execution>
-						<id>categories</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/api/categories.yaml</inputSpec>
-							<language>spring</language>
-							<generateSupportingFiles>false</generateSupportingFiles>
-							<apiPackage>com.sonnesen.categories.api</apiPackage>
-							<modelPackage>com.sonnesen.categories.model</modelPackage>
+							<apiPackage>com.videocustom.users.api</apiPackage>
+							<modelPackage>com.videocustom.users.model</modelPackage>
 							<modelNameSuffix>DTO</modelNameSuffix>
 							<configOptions>
 								<interfaceOnly>true</interfaceOnly>
