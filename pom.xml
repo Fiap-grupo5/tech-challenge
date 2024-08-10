@@ -113,6 +113,25 @@
 							</configOptions>
 						</configuration>
 					</execution>
+					<execution>
+						<id>login</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/api/login.yaml</inputSpec>
+							<language>spring</language>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<apiPackage>com.videocustom.login.api</apiPackage>
+							<modelPackage>com.videocustom.login.model</modelPackage>
+							<modelNameSuffix>DTO</modelNameSuffix>
+							<configOptions>
+								<interfaceOnly>true</interfaceOnly>
+								<jakarta>true</jakarta>
+								<java8>true</java8>
+							</configOptions>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 
