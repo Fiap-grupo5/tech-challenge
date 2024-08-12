@@ -1,31 +1,52 @@
-package com.videocustom.user.model;
+package com.videocustom.infrastructure.api.generated.user;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 /**
- * CreateUserDTO
+ * UpdateUserDTO
  */
 @Validated
 @jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-08-12T04:10:16.831255200-03:00[America/Sao_Paulo]")
 
 
-public class CreateUserDTO   {
+public class UpdateUserDTO   {
+  @JsonProperty("id")
+  private UUID id = null;
+
   @JsonProperty("name")
   private String name = null;
-
-  @JsonProperty("email")
-  private String email = null;
 
   @JsonProperty("password")
   private String password = null;
 
-  public CreateUserDTO name(String name) {
+  public UpdateUserDTO id(UUID id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * The user ID
+   * @return id
+   **/
+  @Schema(example = "123e4567-e89b-12d3-a456-426614174000", description = "The user ID")
+      @NotNull
+
+    @Valid
+    public UUID getId() {
+    return id;
+  }
+
+  public void setId(UUID id) {
+    this.id = id;
+  }
+
+  public UpdateUserDTO name(String name) {
     this.name = name;
     return this;
   }
@@ -34,7 +55,7 @@ public class CreateUserDTO   {
    * The user name
    * @return name
    **/
-  @Schema(example = "John Doe", required = true, description = "The user name")
+  @Schema(example = "John Doe", description = "The user name")
       @NotNull
 
   @Size(max=255)   public String getName() {
@@ -45,27 +66,7 @@ public class CreateUserDTO   {
     this.name = name;
   }
 
-  public CreateUserDTO email(String email) {
-    this.email = email;
-    return this;
-  }
-
-  /**
-   * The user email
-   * @return email
-   **/
-  @Schema(example = "user@email.com", required = true, description = "The user email")
-      @NotNull
-
-    public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public CreateUserDTO password(String password) {
+  public UpdateUserDTO password(String password) {
     this.password = password;
     return this;
   }
@@ -74,7 +75,7 @@ public class CreateUserDTO   {
    * The user password
    * @return password
    **/
-  @Schema(example = "password", required = true, description = "The user password")
+  @Schema(example = "password", description = "The user password")
       @NotNull
 
     public String getPassword() {
@@ -94,24 +95,24 @@ public class CreateUserDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateUserDTO createUser = (CreateUserDTO) o;
-    return Objects.equals(this.name, createUser.name) &&
-        Objects.equals(this.email, createUser.email) &&
-        Objects.equals(this.password, createUser.password);
+    UpdateUserDTO updateUser = (UpdateUserDTO) o;
+    return Objects.equals(this.id, updateUser.id) &&
+        Objects.equals(this.name, updateUser.name) &&
+        Objects.equals(this.password, updateUser.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, email, password);
+    return Objects.hash(id, name, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateUserDTO {\n");
+    sb.append("class UpdateUserDTO {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();

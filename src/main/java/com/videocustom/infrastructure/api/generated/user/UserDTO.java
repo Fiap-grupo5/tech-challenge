@@ -1,8 +1,7 @@
-package com.videocustom.guest.model;
+package com.videocustom.infrastructure.api.generated.user;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -11,13 +10,13 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 /**
- * GuestDTO
+ * UserDTO
  */
 @Validated
-@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-08-12T04:10:18.235256800-03:00[America/Sao_Paulo]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-08-12T04:10:16.831255200-03:00[America/Sao_Paulo]")
 
 
-public class GuestDTO   {
+public class UserDTO   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -36,16 +35,16 @@ public class GuestDTO   {
   @JsonProperty("deletedAt")
   private OffsetDateTime deletedAt = null;
 
-  public GuestDTO id(UUID id) {
+  public UserDTO id(UUID id) {
     this.id = id;
     return this;
   }
 
   /**
-   * The guest ID
+   * The user ID
    * @return id
    **/
-  @Schema(example = "123e4567-e89b-12d3-a456-426614174000", description = "The guest ID")
+  @Schema(example = "123e4567-e89b-12d3-a456-426614174000", description = "The user ID")
       @NotNull
 
     @Valid
@@ -57,16 +56,16 @@ public class GuestDTO   {
     this.id = id;
   }
 
-  public GuestDTO name(String name) {
+  public UserDTO name(String name) {
     this.name = name;
     return this;
   }
 
   /**
-   * The guest name
+   * The user name
    * @return name
    **/
-  @Schema(example = "John Doe", description = "The guest name")
+  @Schema(example = "John Doe", description = "The user name")
       @NotNull
 
   @Size(max=255)   public String getName() {
@@ -77,16 +76,16 @@ public class GuestDTO   {
     this.name = name;
   }
 
-  public GuestDTO email(String email) {
+  public UserDTO email(String email) {
     this.email = email;
     return this;
   }
 
   /**
-   * The guest email
+   * The user email
    * @return email
    **/
-  @Schema(example = "guest@email.com", description = "The guest email")
+  @Schema(example = "user@email.com", description = "The user email")
       @NotNull
 
     public String getEmail() {
@@ -97,16 +96,16 @@ public class GuestDTO   {
     this.email = email;
   }
 
-  public GuestDTO createdAt(OffsetDateTime createdAt) {
+  public UserDTO createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * The date and time the guest was created
+   * The date and time the user was created
    * @return createdAt
    **/
-  @Schema(example = "2021-06-01T10:00Z", description = "The date and time the guest was created")
+  @Schema(example = "2021-06-01T10:00Z", description = "The date and time the user was created")
       @NotNull
 
     @Valid
@@ -118,16 +117,16 @@ public class GuestDTO   {
     this.createdAt = createdAt;
   }
 
-  public GuestDTO updatedAt(OffsetDateTime updatedAt) {
+  public UserDTO updatedAt(OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
 
   /**
-   * The date and time the guest was updated
+   * The date and time the user was updated
    * @return updatedAt
    **/
-  @Schema(example = "2021-06-01T10:00Z", description = "The date and time the guest was updated")
+  @Schema(example = "2021-06-01T10:00Z", description = "The date and time the user was updated")
       @NotNull
 
     @Valid
@@ -139,16 +138,16 @@ public class GuestDTO   {
     this.updatedAt = updatedAt;
   }
 
-  public GuestDTO deletedAt(OffsetDateTime deletedAt) {
+  public UserDTO deletedAt(OffsetDateTime deletedAt) {
     this.deletedAt = deletedAt;
     return this;
   }
 
   /**
-   * The date and time the guest was deleted
+   * The date and time the user was deleted
    * @return deletedAt
    **/
-  @Schema(example = "2021-06-01T10:00Z", description = "The date and time the guest was deleted")
+  @Schema(example = "2021-06-01T10:00Z", description = "The date and time the user was deleted")
       @NotNull
 
     @Valid
@@ -169,13 +168,13 @@ public class GuestDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GuestDTO guest = (GuestDTO) o;
-    return Objects.equals(this.id, guest.id) &&
-        Objects.equals(this.name, guest.name) &&
-        Objects.equals(this.email, guest.email) &&
-        Objects.equals(this.createdAt, guest.createdAt) &&
-        Objects.equals(this.updatedAt, guest.updatedAt) &&
-        Objects.equals(this.deletedAt, guest.deletedAt);
+    UserDTO user = (UserDTO) o;
+    return Objects.equals(this.id, user.id) &&
+        Objects.equals(this.name, user.name) &&
+        Objects.equals(this.email, user.email) &&
+        Objects.equals(this.createdAt, user.createdAt) &&
+        Objects.equals(this.updatedAt, user.updatedAt) &&
+        Objects.equals(this.deletedAt, user.deletedAt);
   }
 
   @Override
@@ -186,7 +185,7 @@ public class GuestDTO   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GuestDTO {\n");
+    sb.append("class UserDTO {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

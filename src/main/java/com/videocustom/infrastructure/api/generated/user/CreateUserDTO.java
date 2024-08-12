@@ -1,37 +1,58 @@
-package com.videocustom.login.model;
+package com.videocustom.infrastructure.api.generated.user;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 /**
- * RequestLoginDTO
+ * CreateUserDTO
  */
 @Validated
-@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-08-12T04:10:17.883258200-03:00[America/Sao_Paulo]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-08-12T04:10:16.831255200-03:00[America/Sao_Paulo]")
 
 
-public class RequestLoginDTO   {
+public class CreateUserDTO   {
+  @JsonProperty("name")
+  private String name = null;
+
   @JsonProperty("email")
   private String email = null;
 
   @JsonProperty("password")
   private String password = null;
 
-  public RequestLoginDTO email(String email) {
+  public CreateUserDTO name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * The user name
+   * @return name
+   **/
+  @Schema(example = "John Doe", required = true, description = "The user name")
+      @NotNull
+
+  @Size(max=255)   public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CreateUserDTO email(String email) {
     this.email = email;
     return this;
   }
 
   /**
-   * The user or guest email
+   * The user email
    * @return email
    **/
-  @Schema(example = "user@email.com", required = true, description = "The user or guest email")
+  @Schema(example = "user@email.com", required = true, description = "The user email")
       @NotNull
 
     public String getEmail() {
@@ -42,16 +63,16 @@ public class RequestLoginDTO   {
     this.email = email;
   }
 
-  public RequestLoginDTO password(String password) {
+  public CreateUserDTO password(String password) {
     this.password = password;
     return this;
   }
 
   /**
-   * The user or guest password
+   * The user password
    * @return password
    **/
-  @Schema(example = "password", required = true, description = "The user or guest password")
+  @Schema(example = "password", required = true, description = "The user password")
       @NotNull
 
     public String getPassword() {
@@ -71,21 +92,23 @@ public class RequestLoginDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RequestLoginDTO requestLogin = (RequestLoginDTO) o;
-    return Objects.equals(this.email, requestLogin.email) &&
-        Objects.equals(this.password, requestLogin.password);
+    CreateUserDTO createUser = (CreateUserDTO) o;
+    return Objects.equals(this.name, createUser.name) &&
+        Objects.equals(this.email, createUser.email) &&
+        Objects.equals(this.password, createUser.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, password);
+    return Objects.hash(name, email, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RequestLoginDTO {\n");
+    sb.append("class CreateUserDTO {\n");
     
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
