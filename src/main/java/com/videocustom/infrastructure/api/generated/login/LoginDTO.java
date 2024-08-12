@@ -1,14 +1,15 @@
-package com.videocustom.login.model;
+package com.videocustom.infrastructure.api.generated.login;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.OffsetDateTime;
-import java.util.UUID;
-import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.validation.annotation.Validated;
+
+import java.time.OffsetDateTime;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * LoginDTO
@@ -185,7 +186,7 @@ public class LoginDTO   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -227,7 +228,7 @@ public class LoginDTO   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
