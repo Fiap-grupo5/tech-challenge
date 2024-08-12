@@ -1,30 +1,31 @@
 package com.videocustom.controller;
 
 import com.videocustom.model.Project;
+import com.videocustom.model.ProjectDAO;
 import com.videocustom.view.ProjectView;
 
 import java.util.List;
 
 public class ProjectController {
-    private model.ProjectDAO projectDAO;
+    private ProjectDAO projectDAO;
     private ProjectView projectView;
 
-    public ProjectController(model.ProjectDAO projectDAO, ProjectView projectView) {
+    public ProjectController(ProjectDAO projectDAO, ProjectView projectView) {
         this.projectDAO = projectDAO;
         this.projectView = projectView;
     }
 
-    public void newProjectt(Project product) {
-        projectDAO.newProject(product);
+    public void newProjectt(Project project) {
+        projectDAO.newProject(project);
     }
 
     public void showAllProjects() {
-        List<Project> products = projectDAO.getAllProjects();
-        projectView.projectDetails(products);
+        List<Project> projects = projectDAO.getAllProjects();
+        projectView.projectDetails(projects);
     }
 
-    public void updateProject(Project product) {
-        projectDAO.updateProject(product);
+    public void updateProject(Project project) {
+        projectDAO.updateProject(project);
     }
 
     public void deleteProject(int id) {

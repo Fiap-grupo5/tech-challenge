@@ -1,4 +1,4 @@
-package model;
+package com.videocustom.model;
 
 import com.videocustom.model.Project;
 

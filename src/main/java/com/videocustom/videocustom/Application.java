@@ -2,10 +2,12 @@ package com.videocustom.videocustom;
 
 import com.videocustom.controller.ProjectController;
 import com.videocustom.model.Project;
+import com.videocustom.model.ProjectDAO;
 import com.videocustom.view.ProjectView;
-import model.ProjectDAO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Scanner;
 
 @SpringBootApplication
 public class Application {
@@ -16,31 +18,42 @@ public class Application {
 		ProjectView projectView = new ProjectView();
 		ProjectController projectController = new ProjectController(projectDAO, projectView);
 
-		//Criando um projeto
-		Project project1 = new Project(1, "Cacau do zé", "descrição do vídeo do cacau do zé", "em andamento");
-		projectController.newProjectt(project1);
+		Scanner scanner = new Scanner(System.in);
+		boolean running = true;
 
-		Project project2 = new Project(2, "Tapioca do Figueira", "descrição do vídeo", "concluído");
-		projectController.newProjectt(project2);
+		while (running) {
+			projectView.printMenu();
+			int choice = scanner.nextInt();
+			scanner.nextLine();
 
-		//Exibindo um projeto
-		projectController.showAllProjects();
+			switch (choice) {
+				case 1:
+					Project newProduct = projectView.getInputProject();
+					projectController.newProjectt(newProduct);
+					break;
+				case 2:
+					projectController.showAllProjects();
+					break;
+				case 3:
+					Project updatedProduct = projectView.getUpdatedProject();
+					projectController.updateProject(updatedProduct);
+					break;
+				case 4:
+					int productId = projectView.getProjectId();
+					projectController.deleteProject(productId);
+					break;
+				case 5:
+					running = false;
+					System.out.println("Exiting...");
+					break;
+				default:
+					System.out.println("Invalid choice, please try again.");
+			}
+			System.out.println();
+		}
 
-		//Atualizando um projeto
-		project1.setName("Chocolate do Zé");
-		project1.setDescription("descrição do chocolate do zé");
-		project1.setStatus("cancelado");
-
-		projectController.showAllProjects();
-
-		//Deletando um produto
-		projectController.deleteProject(project2.getId());
-
-		//Exibindo todos os projetos após exclusão
-		projectController.showAllProjects();
-
-
-
+		scanner.close();
 	}
+
 
 }
