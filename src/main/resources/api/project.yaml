@@ -1,0 +1,196 @@
+openapi: 3.0.3
+info:
+  title: Project API
+  version: 1.0.0
+  description: API for managing projects
+  contact:
+    name: Gabriel Arrighi Silva
+    email: gasilva912@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://localhost:8080
+    description: Local server
+  - url: https://api.fiap.com.br/project
+    description: Production server
+tags:
+  - name: Project
+    description: Operations related to projects
+paths:
+  /project:
+    get:
+      tags:
+        - Project
+      summary: List all projects
+      operationId: listProjects
+      responses:
+        "200":
+          description: A list of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+    post:
+      tags:
+        - Project
+      summary: Create a new project
+      operationId: createProject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProject"
+      responses:
+        "201":
+          description: The project was created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+  /project/{projectId}:
+    put:
+      tags:
+        - Project
+      summary: Update an existing project
+      operationId: updateProject
+      parameters:
+        - name: projectId
+          in: query
+          description: The project ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProject"
+      responses:
+        "200":
+          description: The project was updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+    delete:
+      tags:
+        - Project
+      summary: Delete a project
+      operationId: deleteProject
+      parameters:
+        - name: projectId
+          in: query
+          description: The project ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The project was deleted
+components:
+  schemas:
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The project ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        name:
+          type: string
+          maxLength: 255
+          description: The project name
+          example: Project 1
+        description:
+          type: string
+          description: The project description
+          example: This is a project
+        status:
+          type: string
+          format: enum
+          enum:
+            - created
+            - in_progress
+            - done
+          description: The project status
+          example: created
+        createdBy:
+          type: string
+          format: uuid
+          description: The user ID that created the project
+          example: 123e4567-e89b-12d3-a456-426614174000
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the guest was created
+          example: 2021-06-01T10:00:00Z
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the guest was updated
+          example: 2021-06-01T10:00:00Z
+        deletedAt:
+          type: string
+          format: date-time
+          description: The date and time the guest was deleted
+          example: 2021-06-01T10:00:00Z
+    CreateProject:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          description: The project name
+          example: Project 1
+        description:
+          type: string
+          description: The project description
+          example: This is a project
+        createdBy:
+          type: string
+          format: uuid
+          description: The user ID that created the project
+          example: 123e4567-e89b-12d3-a456-426614174000
+      required:
+        - name
+        - description
+        - createdBy
+    UpdateProject:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The project ID
+          example: 123e4567-e89b-12d3-a456-426614174000
+        name:
+          type: string
+          maxLength: 255
+          description: The project name
+          example: Project 1
+        description:
+          type: string
+          description: The project description
+          example: This is a project
+        status:
+          type: string
+          format: enum
+          enum:
+            - created
+            - in_progress
+            - done
+          description: The project status
+          example: created
+        createdBy:
+          type: string
+          format: uuid
+          description: The user ID that created the project
+          example: 123e4567-e89b-12d3-a456-426614174000

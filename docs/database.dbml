@@ -1,0 +1,64 @@
+Table user {
+    id uuid [pk]
+    name varchar(255)
+    email varchar(255)
+    password varchar(255)
+    created_at timestamp
+    updated_at timestamp
+    deleted_at timestamp
+}
+
+Table guest {
+    id uuid [pk]
+    name varchar(255)
+    email varchar(255)
+    password varchar(255)
+    created_at timestamp
+    updated_at timestamp
+    deleted_at timestamp
+}
+
+Table project {
+    id uuid [pk]
+    name varchar(255)
+    description text
+    status enum('created', 'in_progress', 'done')
+    created_by uuid [ref: > user.id]
+    created_at timestamp
+    updated_at timestamp
+    deleted_at timestamp
+}
+
+Table invite {
+    id uuid [pk]
+    guest_id uuid [ref: > guest.id]
+    project_id uuid [ref: > project.id]
+    invite_by uuid [ref: > user.id]
+    created_at timestamp
+    updated_at timestamp
+    deleted_at timestamp
+}
+
+Table video {
+    id uuid [pk]
+    name varchar(255)
+    description text
+    project_id uuid [ref: > project.id]
+    url varchar(255)
+    status enum('created', 'reproved', 'accepted')
+    created_by uuid [ref: > user.id]
+    created_at timestamp
+    updated_at timestamp
+    deleted_at timestamp
+}
+
+Table request {
+    id uuid [pk]
+    video_id uuid [ref: > video.id]
+    time int
+    request_by uuid [ref: > guest.id]
+    description text
+    created_at timestamp
+    updated_at timestamp
+    deleted_at timestamp
+}
