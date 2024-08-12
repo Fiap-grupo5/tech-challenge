@@ -1,9 +1,9 @@
 package com.videocustom.videocustom;
 
-import com.videocustom.controller.ProjectController;
-import com.videocustom.model.Project;
-import com.videocustom.model.ProjectDAO;
-import com.videocustom.view.ProjectView;
+import com.videocustom.controller.project.ProjectController;
+import com.videocustom.model.project.Project;
+import com.videocustom.model.project.ProjectDAO;
+import com.videocustom.view.project.ProjectView;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

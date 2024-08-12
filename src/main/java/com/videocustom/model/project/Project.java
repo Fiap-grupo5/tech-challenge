@@ -1,4 +1,4 @@
-package com.videocustom.model;
+package com.videocustom.model.project;
 
 public class Project {
 

@@ -1,6 +1,4 @@
-package com.videocustom.model;
-
-import com.videocustom.model.Project;
+package com.videocustom.model.project;
 
 import java.util.ArrayList;
 import java.util.List;

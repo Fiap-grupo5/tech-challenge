@@ -1,8 +1,8 @@
-package com.videocustom.controller;
+package com.videocustom.controller.video;
 
-import com.videocustom.model.Project;
-import com.videocustom.model.ProjectDAO;
-import com.videocustom.view.ProjectView;
+import com.videocustom.model.project.Project;
+import com.videocustom.model.project.ProjectDAO;
+import com.videocustom.view.project.ProjectView;
 
 import java.util.List;
 

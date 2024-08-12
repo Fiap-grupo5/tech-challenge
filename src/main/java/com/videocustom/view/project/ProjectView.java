@@ -1,6 +1,6 @@
-package com.videocustom.view;
+package com.videocustom.view.project;
 
-import com.videocustom.model.Project;
+import com.videocustom.model.project.Project;
 
 import java.util.List;
 import java.util.Scanner;
