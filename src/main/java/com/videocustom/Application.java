@@ -1,7 +1,6 @@
 package com.videocustom;
 
 import com.videocustom.controller.project.ProjectController;
-import com.videocustom.application.repositories.ProjectRepository2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

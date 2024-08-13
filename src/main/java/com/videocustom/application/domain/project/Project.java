@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class Project {
 
-    private ProjectId id;
-    private String name;
+    private static ProjectId id;
+    private static String name;
     private String description;
     private String status;
     private Instant createdAt;
@@ -27,10 +27,9 @@ public class Project {
     }
 
     public static Project newProject(final String name, final String description, final String status, final boolean active) {
-        final var id = ProjectId.generate();
         final var now = Instant.now();
         final var deletedAt = active ? null : now;
-        return new Project(id, name, description, status, active, now, now, deletedAt);
+        return new Project(new ProjectId(null), name, description, status, active, now, now, deletedAt);
     }
     public static Project with(final ProjectId id, final String name, final String description, final String status,
                                 final boolean isActive, final Instant createdAt, final Instant updatedAt, final Instant deletedAt) {
@@ -65,6 +64,69 @@ public class Project {
         return this;
     }
 
+    public static ProjectId getId() {
+        return id;
+    }
+
+    public static void setId(ProjectId id) {
+        Project.id = id;
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static void setName(String name) {
+        Project.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
 
 }
