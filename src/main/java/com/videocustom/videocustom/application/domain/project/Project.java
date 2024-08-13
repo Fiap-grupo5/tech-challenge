@@ -25,7 +25,6 @@ public class Project {
         this.name = name;
         this.description = description;
         this.status = status;
-        this.createdBy = createdBy;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.deletedAt = deletedAt;
