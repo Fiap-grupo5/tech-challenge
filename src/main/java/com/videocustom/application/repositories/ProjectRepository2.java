@@ -1,21 +1,32 @@
-package com.videocustom.model.project;
+package com.videocustom.application.repositories;
+
+import com.videocustom.model.project.Project;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Optional;
 
-public class ProjectDAO {
+public class ProjectRepository2 {
 
     private List<Project> projects = new ArrayList<>();
-    private AtomicInteger idGenerator = new AtomicInteger(1);
+    private int currentId = 1;
 
-    public void newProject(Project project) {
-        project.setId(idGenerator.getAndIncrement());
-        projects.add(project);
+    public Optional<Project> findById(int id) {
+        return projects.stream().filter(product -> product.getId() == id).findFirst();
     }
 
     public List<Project> getAllProjects() {
         return new ArrayList<>(projects); // Retorna uma cópia da lista para evitar modificações externas
+    }
+
+    public Project saveProject(Project project) {
+        if (project.getId() == 0) {
+            project.setId(currentId++);
+            projects.add(project);
+        } else {
+            updateProject(project);
+        }
+        return project;
     }
 
     public void updateProject(Project updatedProject) {

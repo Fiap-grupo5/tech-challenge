@@ -1,4 +1,6 @@
-package com.videocustom.model.project;
+package com.videocustom.application.repositories;
+
+import com.videocustom.model.project.Project;
 
 import java.sql.*;
 import java.util.ArrayList;
