@@ -73,6 +73,20 @@ import com.videocustom.videocustom.application.usecases.request.update.DefaultRe
 import com.videocustom.videocustom.infrastructure.persistence.repositories.RequestJPARepository;
 import com.videocustom.videocustom.infrastructure.repositories.RequestRepositoryImpl;
 
+import com.videocustom.videocustom.application.repositories.InviteRepository;
+import com.videocustom.videocustom.application.usecases.invite.create.InviteCreateUseCase;
+import com.videocustom.videocustom.application.usecases.invite.create.DefaultInviteCreateUseCase;
+import com.videocustom.videocustom.application.usecases.invite.delete.DefaultInviteDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.invite.delete.InviteDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.invite.retrieve.get.InviteGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.invite.retrieve.get.DefaultInviteGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.invite.retrieve.list.InviteListUseCase;
+import com.videocustom.videocustom.application.usecases.invite.retrieve.list.DefaultInviteListUseCase;
+import com.videocustom.videocustom.application.usecases.invite.update.InviteUpdateUseCase;
+import com.videocustom.videocustom.application.usecases.invite.update.DefaultInviteUpdateUseCase;
+import com.videocustom.videocustom.infrastructure.persistence.repositories.InviteJPARepository;
+import com.videocustom.videocustom.infrastructure.repositories.InviteRepositoryImpl;
+
 @Configuration
 public class ApplicationConfig {
 
@@ -224,5 +238,35 @@ public class ApplicationConfig {
     @Bean
     public RequestUpdateUseCase requestUpdateUseCase(final RequestRepository requestRepository) {
         return new DefaultRequestUpdateUseCase(requestRepository);
+    }
+
+    @Bean
+    public InviteRepository inviteRepository(final InviteJPARepository inviteRepository, final GuestJPARepository guestRepository, final ProjectJPARepository projectRepository, UserJPARepository userJPARepository) {
+        return new InviteRepositoryImpl(inviteRepository, guestRepository, projectRepository, userJPARepository);
+    }
+
+    @Bean
+    public InviteCreateUseCase inviteCreateUseCase(final InviteRepository inviteRepository) {
+        return new DefaultInviteCreateUseCase(inviteRepository);
+    }
+
+    @Bean
+    public InviteListUseCase inviteListUseCase(final InviteRepository inviteRepository) {
+        return new DefaultInviteListUseCase(inviteRepository);
+    }
+
+    @Bean
+    public InviteGetByIdUseCase inviteGetByIdUseCase(final InviteRepository inviteRepository) {
+        return new DefaultInviteGetByIdUseCase(inviteRepository);
+    }
+
+    @Bean
+    public InviteDeleteUseCase inviteDeleteUseCase(final InviteRepository inviteRepository) {
+        return new DefaultInviteDeleteUseCase(inviteRepository);
+    }
+
+    @Bean
+    public InviteUpdateUseCase inviteUpdateUseCase(final InviteRepository inviteRepository) {
+        return new DefaultInviteUpdateUseCase(inviteRepository);
     }
 }

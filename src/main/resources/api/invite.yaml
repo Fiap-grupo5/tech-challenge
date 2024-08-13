@@ -52,6 +52,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/Invite"
   /invite/{inviteId}:
+    get:
+      tags:
+        - Invite
+      summary: Get a invite by ID
+      operationId: getInvite
+      parameters:
+        - name: inviteId
+          in: path
+          description: ID of the invite to return
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Invite found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invite"
+        "404":
+          description: Invite not found
     put:
       tags:
         - Invite
