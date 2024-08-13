@@ -59,7 +59,7 @@ paths:
       operationId: updateUser
       parameters:
         - name: userId
-          in: query
+          in: path
           description: The user ID
           required: true
           schema:
@@ -85,7 +85,7 @@ paths:
       operationId: deleteUser
       parameters:
         - name: userId
-          in: query
+          in: path
           description: The user ID
           required: true
           schema:

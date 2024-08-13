@@ -59,7 +59,7 @@ paths:
       operationId: updateResquest
       parameters:
         - name: requestId
-          in: query
+          in: path
           description: The request ID
           required: true
           schema:

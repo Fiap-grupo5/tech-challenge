@@ -59,7 +59,7 @@ paths:
       operationId: updateProject
       parameters:
         - name: projectId
-          in: query
+          in: path
           description: The project ID
           required: true
           schema:

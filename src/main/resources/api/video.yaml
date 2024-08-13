@@ -59,7 +59,7 @@ paths:
       operationId: updateVideo
       parameters:
         - name: videoId
-          in: query
+          in: path
           description: The video ID
           required: true
           schema:

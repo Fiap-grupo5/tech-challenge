@@ -59,7 +59,7 @@ paths:
       operationId: updateGuest
       parameters:
         - name: guestId
-          in: query
+          in: path
           description: The guest ID
           required: true
           schema:

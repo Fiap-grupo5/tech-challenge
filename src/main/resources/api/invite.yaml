@@ -59,7 +59,7 @@ paths:
       operationId: updateInvite
       parameters:
         - name: inviteId
-          in: query
+          in: path
           description: The invite ID
           required: true
           schema:
