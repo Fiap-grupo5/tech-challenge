@@ -59,7 +59,7 @@ paths:
       operationId: updateVideo
       parameters:
         - name: videoId
-          in: query
+          in: path
           description: The video ID
           required: true
           schema:
@@ -85,7 +85,7 @@ paths:
       operationId: deleteVideo
       parameters:
         - name: videoId
-          in: query
+          in: path
           description: The video ID
           required: true
           schema:
@@ -190,11 +190,6 @@ components:
     UpdateVideo:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: The video ID
-          example: 123e4567-e89b-12d3-a456-426614174000
         name:
           type: string
           maxLength: 255
