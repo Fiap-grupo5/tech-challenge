@@ -52,6 +52,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/Guest"
   /guest/{guestId}:
+    get:
+      tags:
+        - Guest
+      summary: Get a guest by ID
+      operationId: getGuest
+      parameters:
+        - name: guestId
+          in: path
+          description: ID of the guest to return
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Guest found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Guest"
+        "404":
+          description: Guest not found
     put:
       tags:
         - Guest
@@ -162,6 +184,12 @@ components:
           maxLength: 255
           description: The guest name
           example: John Doe
+        email:
+          type: string
+          format: email
+          description: The guest email
+          maxLength: 255
+          example: guest@email.com
         password:
           type: string
           format: password

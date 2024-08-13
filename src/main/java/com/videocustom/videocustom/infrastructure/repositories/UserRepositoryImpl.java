@@ -45,8 +45,8 @@ public class UserRepositoryImpl implements UserRepository {
         return save(aUser);
     }
 
-    private User save(final User category) {
-        return userJPARepository.save(UserJPAEntity.of(category)).toUser();
+    private User save(final User user) {
+        return userJPARepository.save(UserJPAEntity.of(user)).toUser();
     }
 
 }

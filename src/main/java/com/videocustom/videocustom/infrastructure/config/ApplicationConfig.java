@@ -17,6 +17,20 @@ import com.videocustom.videocustom.application.usecases.user.update.DefaultUserU
 import com.videocustom.videocustom.infrastructure.persistence.repositories.UserJPARepository;
 import com.videocustom.videocustom.infrastructure.repositories.UserRepositoryImpl;
 
+import com.videocustom.videocustom.application.repositories.GuestRepository;
+import com.videocustom.videocustom.application.usecases.guest.create.GuestCreateUseCase;
+import com.videocustom.videocustom.application.usecases.guest.create.DefaultGuestCreateUseCase;
+import com.videocustom.videocustom.application.usecases.guest.delete.DefaultGuestDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.guest.delete.GuestDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.guest.retrieve.get.GuestGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.guest.retrieve.get.DefaultGuestGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.guest.retrieve.list.GuestListUseCase;
+import com.videocustom.videocustom.application.usecases.guest.retrieve.list.DefaultGuestListUseCase;
+import com.videocustom.videocustom.application.usecases.guest.update.GuestUpdateUseCase;
+import com.videocustom.videocustom.application.usecases.guest.update.DefaultGuestUpdateUseCase;
+import com.videocustom.videocustom.infrastructure.persistence.repositories.GuestJPARepository;
+import com.videocustom.videocustom.infrastructure.repositories.GuestRepositoryImpl;
+
 @Configuration
 public class ApplicationConfig {
 
@@ -48,5 +62,35 @@ public class ApplicationConfig {
     @Bean
     public UserUpdateUseCase userUpdateUseCase(final UserRepository userRepository) {
         return new DefaultUserUpdateUseCase(userRepository);
+    }
+
+    @Bean
+    public GuestRepository guestRepository(final GuestJPARepository guestJPARepository) {
+        return new GuestRepositoryImpl(guestJPARepository);
+    }
+
+    @Bean
+    public GuestCreateUseCase guestCreateUseCase(final GuestRepository guestRepository) {
+        return new DefaultGuestCreateUseCase(guestRepository);
+    }
+
+    @Bean
+    public GuestListUseCase guestListUseCase(final GuestRepository guestRepository) {
+        return new DefaultGuestListUseCase(guestRepository);
+    }
+
+    @Bean
+    public GuestGetByIdUseCase GuestGetByIdUseCase(final GuestRepository guestRepository) {
+        return new DefaultGuestGetByIdUseCase(guestRepository);
+    }
+
+    @Bean
+    public GuestDeleteUseCase GuestDeleteUseCase(final GuestRepository guestRepository) {
+        return new DefaultGuestDeleteUseCase(guestRepository);
+    }
+
+    @Bean
+    public GuestUpdateUseCase guestUpdateUseCase(final GuestRepository guestRepository) {
+        return new DefaultGuestUpdateUseCase(guestRepository);
     }
 }
