@@ -59,7 +59,7 @@ paths:
       operationId: updateUser
       parameters:
         - name: userId
-          in: query
+          in: path
           description: The user ID
           required: true
           schema:
@@ -85,7 +85,7 @@ paths:
       operationId: deleteUser
       parameters:
         - name: userId
-          in: query
+          in: path
           description: The user ID
           required: true
           schema:
@@ -157,11 +157,6 @@ components:
     UpdateUser:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: The user ID
-          example: 123e4567-e89b-12d3-a456-426614174000
         name:
           type: string
           maxLength: 255
