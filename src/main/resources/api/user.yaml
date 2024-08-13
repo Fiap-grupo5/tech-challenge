@@ -52,6 +52,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/User"
   /user/{userId}:
+    get:
+      tags:
+        - User
+      summary: Get a user by ID
+      operationId: getUser
+      parameters:
+        - name: userId
+          in: path
+          description: ID of the user to return
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: User found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: User not found
     put:
       tags:
         - User
@@ -162,6 +184,12 @@ components:
           maxLength: 255
           description: The user name
           example: John Doe
+        email:
+          type: string
+          format: email
+          maxLength: 255
+          description: The user email
+          example: user@email.com
         password:
           type: string
           format: password
