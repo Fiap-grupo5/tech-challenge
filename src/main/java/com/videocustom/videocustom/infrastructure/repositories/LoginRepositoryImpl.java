@@ -1,8 +1,9 @@
-package com.videocustom.videocustom.infrastructure.persistence.repositories;
+package com.videocustom.videocustom.infrastructure.repositories;
 
 import com.videocustom.videocustom.application.domain.user.User;
 import com.videocustom.videocustom.application.repositories.LoginRepository;
 import com.videocustom.videocustom.infrastructure.persistence.entities.UserJPAEntity;
+import com.videocustom.videocustom.infrastructure.persistence.repositories.UserJPARepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
