@@ -31,6 +31,20 @@ import com.videocustom.videocustom.application.usecases.guest.update.DefaultGues
 import com.videocustom.videocustom.infrastructure.persistence.repositories.GuestJPARepository;
 import com.videocustom.videocustom.infrastructure.repositories.GuestRepositoryImpl;
 
+import com.videocustom.videocustom.application.repositories.ProjectRepository;
+import com.videocustom.videocustom.application.usecases.project.create.ProjectCreateUseCase;
+import com.videocustom.videocustom.application.usecases.project.create.DefaultProjectCreateUseCase;
+import com.videocustom.videocustom.application.usecases.project.delete.DefaultProjectDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.project.delete.ProjectDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.project.retrieve.get.ProjectGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.project.retrieve.get.DefaultProjectGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.project.retrieve.list.ProjectListUseCase;
+import com.videocustom.videocustom.application.usecases.project.retrieve.list.DefaultProjectListUseCase;
+import com.videocustom.videocustom.application.usecases.project.update.ProjectUpdateUseCase;
+import com.videocustom.videocustom.application.usecases.project.update.DefaultProjectUpdateUseCase;
+import com.videocustom.videocustom.infrastructure.persistence.repositories.ProjectJPARepository;
+import com.videocustom.videocustom.infrastructure.repositories.ProjectRepositoryImpl;
+
 @Configuration
 public class ApplicationConfig {
 
@@ -92,5 +106,35 @@ public class ApplicationConfig {
     @Bean
     public GuestUpdateUseCase guestUpdateUseCase(final GuestRepository guestRepository) {
         return new DefaultGuestUpdateUseCase(guestRepository);
+    }
+
+    @Bean
+    public ProjectRepository projectRepository(final ProjectJPARepository projectRepository, final UserJPARepository userRepository) {
+        return new ProjectRepositoryImpl(projectRepository, userRepository);
+    }
+
+    @Bean
+    public ProjectCreateUseCase projectCreateUseCase(final ProjectRepository projectRepository) {
+        return new DefaultProjectCreateUseCase(projectRepository);
+    }
+
+    @Bean
+    public ProjectListUseCase projectListUseCase(final ProjectRepository projectRepository) {
+        return new DefaultProjectListUseCase(projectRepository);
+    }
+
+    @Bean
+    public ProjectGetByIdUseCase ProjectGetByIdUseCase(final ProjectRepository projectRepository) {
+        return new DefaultProjectGetByIdUseCase(projectRepository);
+    }
+
+    @Bean
+    public ProjectDeleteUseCase ProjectDeleteUseCase(final ProjectRepository projectRepository) {
+        return new DefaultProjectDeleteUseCase(projectRepository);
+    }
+
+    @Bean
+    public ProjectUpdateUseCase projectUpdateUseCase(final ProjectRepository projectRepository) {
+        return new DefaultProjectUpdateUseCase(projectRepository);
     }
 }
