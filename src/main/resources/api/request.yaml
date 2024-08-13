@@ -59,7 +59,7 @@ paths:
       operationId: updateResquest
       parameters:
         - name: requestId
-          in: query
+          in: path
           description: The request ID
           required: true
           schema:
@@ -85,7 +85,7 @@ paths:
       operationId: deleteResquest
       parameters:
         - name: requestId
-          in: query
+          in: path
           description: The request ID
           required: true
           schema:
@@ -166,11 +166,6 @@ components:
     UpdateRequest:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: The request ID
-          example: 123e4567-e89b-12d3-a456-426614174000
         videoId:
           type: string
           format: uuid
