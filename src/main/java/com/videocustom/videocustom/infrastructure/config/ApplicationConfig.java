@@ -45,6 +45,20 @@ import com.videocustom.videocustom.application.usecases.project.update.DefaultPr
 import com.videocustom.videocustom.infrastructure.persistence.repositories.ProjectJPARepository;
 import com.videocustom.videocustom.infrastructure.repositories.ProjectRepositoryImpl;
 
+import com.videocustom.videocustom.application.repositories.VideoRepository;
+import com.videocustom.videocustom.application.usecases.video.create.VideoCreateUseCase;
+import com.videocustom.videocustom.application.usecases.video.create.DefaultVideoCreateUseCase;
+import com.videocustom.videocustom.application.usecases.video.delete.DefaultVideoDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.video.delete.VideoDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.video.retrieve.get.VideoGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.video.retrieve.get.DefaultVideoGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.video.retrieve.list.VideoListUseCase;
+import com.videocustom.videocustom.application.usecases.video.retrieve.list.DefaultVideoListUseCase;
+import com.videocustom.videocustom.application.usecases.video.update.VideoUpdateUseCase;
+import com.videocustom.videocustom.application.usecases.video.update.DefaultVideoUpdateUseCase;
+import com.videocustom.videocustom.infrastructure.persistence.repositories.VideoJPARepository;
+import com.videocustom.videocustom.infrastructure.repositories.VideoRepositoryImpl;
+
 @Configuration
 public class ApplicationConfig {
 
@@ -94,12 +108,12 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public GuestGetByIdUseCase GuestGetByIdUseCase(final GuestRepository guestRepository) {
+    public GuestGetByIdUseCase guestGetByIdUseCase(final GuestRepository guestRepository) {
         return new DefaultGuestGetByIdUseCase(guestRepository);
     }
 
     @Bean
-    public GuestDeleteUseCase GuestDeleteUseCase(final GuestRepository guestRepository) {
+    public GuestDeleteUseCase guestDeleteUseCase(final GuestRepository guestRepository) {
         return new DefaultGuestDeleteUseCase(guestRepository);
     }
 
@@ -124,17 +138,47 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public ProjectGetByIdUseCase ProjectGetByIdUseCase(final ProjectRepository projectRepository) {
+    public ProjectGetByIdUseCase projectGetByIdUseCase(final ProjectRepository projectRepository) {
         return new DefaultProjectGetByIdUseCase(projectRepository);
     }
 
     @Bean
-    public ProjectDeleteUseCase ProjectDeleteUseCase(final ProjectRepository projectRepository) {
+    public ProjectDeleteUseCase projectDeleteUseCase(final ProjectRepository projectRepository) {
         return new DefaultProjectDeleteUseCase(projectRepository);
     }
 
     @Bean
     public ProjectUpdateUseCase projectUpdateUseCase(final ProjectRepository projectRepository) {
         return new DefaultProjectUpdateUseCase(projectRepository);
+    }
+
+    @Bean
+    public VideoRepository videoRepository(final VideoJPARepository videoRepository, final UserJPARepository userRepository, final ProjectJPARepository projectRepository) {
+        return new VideoRepositoryImpl(videoRepository, projectRepository, userRepository);
+    }
+
+    @Bean
+    public VideoCreateUseCase videoCreateUseCase(final VideoRepository videoRepository) {
+        return new DefaultVideoCreateUseCase(videoRepository);
+    }
+
+    @Bean
+    public VideoListUseCase videoListUseCase(final VideoRepository videoRepository) {
+        return new DefaultVideoListUseCase(videoRepository);
+    }
+
+    @Bean
+    public VideoGetByIdUseCase videoGetByIdUseCase(final VideoRepository videoRepository) {
+        return new DefaultVideoGetByIdUseCase(videoRepository);
+    }
+
+    @Bean
+    public VideoDeleteUseCase videoDeleteUseCase(final VideoRepository videoRepository) {
+        return new DefaultVideoDeleteUseCase(videoRepository);
+    }
+
+    @Bean
+    public VideoUpdateUseCase videoUpdateUseCase(final VideoRepository videoRepository) {
+        return new DefaultVideoUpdateUseCase(videoRepository);
     }
 }
