@@ -11,8 +11,8 @@ public class DefaultProjectDeleteUseCase extends ProjectDeleteUseCase {
 
     @Override
     public void execute(final String input) {
-        final var categoryId = ProjectId.from(input);
-        projectRepository.deleteById(categoryId);
+        final var projectId = ProjectId.from(input);
+        projectRepository.deleteById(projectId);
     }
 
 }

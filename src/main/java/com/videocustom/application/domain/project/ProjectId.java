@@ -7,7 +7,7 @@ public record ProjectId(String value) {
         try {
             return new ProjectId(UUID.fromString(value).toString());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Invalid category id");
+            throw new IllegalArgumentException("Invalid project id");
         }
     }
 

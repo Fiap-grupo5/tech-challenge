@@ -49,7 +49,7 @@ public class ProjectJPAEntity {
       return null;
     }
 
-    public Project toCategory() {
+    public Project toProject() {
         return Project.with(ProjectId.from(id), name, description, status, active, createdAt, updatedAt, deletedAt);
     }
 }

@@ -4,7 +4,7 @@ import com.videocustom.application.repositories.ProjectRepository;
 import com.videocustom.application.usecases.project.create.DefaultProjectCreateUseCase;
 import com.videocustom.application.usecases.project.delete.DefaultProjectDeleteUseCase;
 import com.videocustom.application.usecases.project.delete.ProjectDeleteUseCase;
-import com.videocustom.application.usecases.project.retrieve.get.DefaultCategoryGetByIdUseCase;
+import com.videocustom.application.usecases.project.retrieve.get.DefaultProjectGetByIdUseCase;
 import com.videocustom.application.usecases.project.retrieve.get.ProjectyGetByIdUseCase;
 import com.videocustom.application.usecases.project.retrieve.list.DefaultProjectListUseCase;
 import com.videocustom.application.usecases.project.retrieve.list.ProjectListUseCase;
@@ -35,7 +35,7 @@ public class ApplicationConfig {
 
     @Bean
     public ProjectyGetByIdUseCase projectGetByIdUseCase(final ProjectRepository projectRepository) {
-        return new DefaultCategoryGetByIdUseCase(projectRepository);
+        return new DefaultProjectGetByIdUseCase(projectRepository);
     }
 
     @Bean

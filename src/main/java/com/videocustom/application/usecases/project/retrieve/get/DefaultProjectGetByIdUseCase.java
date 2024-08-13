@@ -6,7 +6,7 @@ import com.videocustom.application.repositories.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class DefaultCategoryGetByIdUseCase extends ProjectyGetByIdUseCase {
+public class DefaultProjectGetByIdUseCase extends ProjectyGetByIdUseCase {
 
     private final ProjectRepository projectRepository;
 
