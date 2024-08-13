@@ -59,7 +59,7 @@ paths:
       operationId: updateGuest
       parameters:
         - name: guestId
-          in: query
+          in: path
           description: The guest ID
           required: true
           schema:
@@ -85,7 +85,7 @@ paths:
       operationId: deleteGuest
       parameters:
         - name: guestId
-          in: query
+          in: path
           description: The guest ID
           required: true
           schema:
@@ -157,11 +157,6 @@ components:
     UpdateGuest:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: The guest ID
-          example: 123e4567-e89b-12d3-a456-426614174000
         name:
           type: string
           maxLength: 255
