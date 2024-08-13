@@ -59,6 +59,20 @@ import com.videocustom.videocustom.application.usecases.video.update.DefaultVide
 import com.videocustom.videocustom.infrastructure.persistence.repositories.VideoJPARepository;
 import com.videocustom.videocustom.infrastructure.repositories.VideoRepositoryImpl;
 
+import com.videocustom.videocustom.application.repositories.RequestRepository;
+import com.videocustom.videocustom.application.usecases.request.create.RequestCreateUseCase;
+import com.videocustom.videocustom.application.usecases.request.create.DefaultRequestCreateUseCase;
+import com.videocustom.videocustom.application.usecases.request.delete.DefaultRequestDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.request.delete.RequestDeleteUseCase;
+import com.videocustom.videocustom.application.usecases.request.retrieve.get.RequestGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.request.retrieve.get.DefaultRequestGetByIdUseCase;
+import com.videocustom.videocustom.application.usecases.request.retrieve.list.RequestListUseCase;
+import com.videocustom.videocustom.application.usecases.request.retrieve.list.DefaultRequestListUseCase;
+import com.videocustom.videocustom.application.usecases.request.update.RequestUpdateUseCase;
+import com.videocustom.videocustom.application.usecases.request.update.DefaultRequestUpdateUseCase;
+import com.videocustom.videocustom.infrastructure.persistence.repositories.RequestJPARepository;
+import com.videocustom.videocustom.infrastructure.repositories.RequestRepositoryImpl;
+
 @Configuration
 public class ApplicationConfig {
 
@@ -180,5 +194,35 @@ public class ApplicationConfig {
     @Bean
     public VideoUpdateUseCase videoUpdateUseCase(final VideoRepository videoRepository) {
         return new DefaultVideoUpdateUseCase(videoRepository);
+    }
+
+    @Bean
+    public RequestRepository requestRepository(final RequestJPARepository requestRepository, final VideoJPARepository videoRepository, final GuestJPARepository guestRepository) {
+        return new RequestRepositoryImpl(requestRepository, videoRepository, guestRepository);
+    }
+
+    @Bean
+    public RequestCreateUseCase requestCreateUseCase(final RequestRepository requestRepository) {
+        return new DefaultRequestCreateUseCase(requestRepository);
+    }
+
+    @Bean
+    public RequestListUseCase requestListUseCase(final RequestRepository requestRepository) {
+        return new DefaultRequestListUseCase(requestRepository);
+    }
+
+    @Bean
+    public RequestGetByIdUseCase requestGetByIdUseCase(final RequestRepository requestRepository) {
+        return new DefaultRequestGetByIdUseCase(requestRepository);
+    }
+
+    @Bean
+    public RequestDeleteUseCase requestDeleteUseCase(final RequestRepository requestRepository) {
+        return new DefaultRequestDeleteUseCase(requestRepository);
+    }
+
+    @Bean
+    public RequestUpdateUseCase requestUpdateUseCase(final RequestRepository requestRepository) {
+        return new DefaultRequestUpdateUseCase(requestRepository);
     }
 }
