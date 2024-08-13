@@ -45,6 +45,14 @@ public class GuestRepositoryImpl implements GuestRepository {
         return save(aGuest);
     }
 
+    @Override
+    public Optional<Guest> findByEmailAndPassword(String email, String password) {
+        return guestJPARepository.findAll().stream()
+                .filter(guestEntity -> guestEntity.getEmail().equals(email) && guestEntity.getPassword().equals(password))
+                .map(GuestJPAEntity::toGuest)
+                .findFirst();
+    }
+
     private Guest save(final Guest guest) {
         return guestJPARepository.save(GuestJPAEntity.of(guest)).toGuest();
     }

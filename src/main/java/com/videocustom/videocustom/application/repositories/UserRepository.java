@@ -18,4 +18,6 @@ public interface UserRepository {
 
     void deleteById(BaseId anId);
 
+    Optional<User> findByEmailAndPassword(String email, String password);
+
 }

@@ -45,6 +45,14 @@ public class UserRepositoryImpl implements UserRepository {
         return save(aUser);
     }
 
+    @Override
+    public Optional<User> findByEmailAndPassword(String email, String password) {
+        return userJPARepository.findAll().stream()
+                .filter(userEntity -> userEntity.getEmail().equals(email) && userEntity.getPassword().equals(password))
+                .map(UserJPAEntity::toUser)
+                .findFirst();
+    }
+
     private User save(final User user) {
         return userJPARepository.save(UserJPAEntity.of(user)).toUser();
     }

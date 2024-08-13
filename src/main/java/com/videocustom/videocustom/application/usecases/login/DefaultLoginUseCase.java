@@ -1,6 +1,10 @@
 package com.videocustom.videocustom.application.usecases.login;
 
 import com.videocustom.videocustom.application.domain.login.Login;
+import com.videocustom.videocustom.application.domain.user.User;
+import com.videocustom.videocustom.application.domain.guest.Guest;
+import com.videocustom.videocustom.application.repositories.UserRepository;
+import com.videocustom.videocustom.application.repositories.GuestRepository;
 import com.videocustom.videocustom.application.usecases.UseCase;
 import com.videocustom.videocustom.application.usecases.login.LoginUseCaseInput;
 import com.videocustom.videocustom.application.usecases.login.LoginUseCaseOutput;
@@ -13,11 +17,17 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DefaultLoginUseCase extends UseCase<LoginUseCaseInput, Optional<LoginUseCaseOutput>> {
 
-    private final Login loginService;
+    private final UserRepository userRepository;
+    private final GuestRepository guestRepository;
 
     @Override
     public Optional<LoginUseCaseOutput> execute(LoginUseCaseInput input) {
-        return loginService.verifyCredentials(input.email(), input.password())
-                .map(LoginUseCaseOutput::from);
+        Optional<User> user = userRepository.findByEmailAndPassword(input.email(), input.password());
+        if (user.isPresent()) {
+            return Optional.of(LoginUseCaseOutput.from(user.get()));
+        }
+
+        Optional<Guest> guest = guestRepository.findByEmailAndPassword(input.email(), input.password());
+        return guest.map(LoginUseCaseOutput::from);
     }
 }

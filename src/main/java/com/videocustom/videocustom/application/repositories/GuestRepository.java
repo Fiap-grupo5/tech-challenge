@@ -18,4 +18,6 @@ public interface GuestRepository {
 
     void deleteById(BaseId anId);
 
+    Optional<Guest> findByEmailAndPassword(String email, String password);
+
 }
