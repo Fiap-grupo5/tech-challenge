@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Resquest API
+  title: Request API
   version: 1.0.0
   description: API for managing requests
   contact:
@@ -15,15 +15,15 @@ servers:
   - url: https://api.fiap.com.br/request
     description: Production server
 tags:
-  - name: Resquest
+  - name: Request
     description: Operations related to resquests
 paths:
   /request:
     get:
       tags:
-        - Resquest
+        - Request
       summary: List all requests
-      operationId: listResquests
+      operationId: listRequests
       responses:
         "200":
           description: A list of requests
@@ -32,12 +32,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Resquest"
+                  $ref: "#/components/schemas/Request"
     post:
       tags:
-        - Resquest
-      summary: Create a new resquest
-      operationId: createResquest
+        - Request
+      summary: Create a new request
+      operationId: createRequest
       requestBody:
         required: true
         content:
@@ -50,13 +50,35 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Resquest"
+                $ref: "#/components/schemas/Request"
   /request/{requestId}:
+    get:
+      tags:
+        - Request
+      summary: Get a request by ID
+      operationId: getRequest
+      parameters:
+        - name: requestId
+          in: path
+          description: ID of the request to return
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Request found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Request"
+        "404":
+          description: Request not found
     put:
       tags:
-        - Resquest
+        - Request
       summary: Update an existing request
-      operationId: updateResquest
+      operationId: updateRequest
       parameters:
         - name: requestId
           in: path
@@ -77,12 +99,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Resquest"
+                $ref: "#/components/schemas/Request"
     delete:
       tags:
-        - Resquest
+        - Request
       summary: Delete a request
-      operationId: deleteResquest
+      operationId: deleteRequest
       parameters:
         - name: requestId
           in: path
@@ -96,7 +118,7 @@ paths:
           description: The request was deleted
 components:
   schemas:
-    Resquest:
+    Request:
       type: object
       properties:
         id:
