@@ -59,7 +59,7 @@ paths:
       operationId: updateInvite
       parameters:
         - name: inviteId
-          in: query
+          in: path
           description: The invite ID
           required: true
           schema:
@@ -85,7 +85,7 @@ paths:
       operationId: deleteInvite
       parameters:
         - name: inviteId
-          in: query
+          in: path
           description: The invite ID
           required: true
           schema:
@@ -159,11 +159,6 @@ components:
     UpdateInvite:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: The guest ID
-          example: 123e4567-e89b-12d3-a456-426614174000
         guestId:
           type: string
           format: uuid
